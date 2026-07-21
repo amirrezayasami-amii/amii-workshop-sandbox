@@ -9,7 +9,7 @@ for the Git & GitHub module.
 # --- Optimisation -----------------------------------------------------------
 EPOCHS = 100
 BATCH_SIZE = 256
-LEARNING_RATE = 1e-3          # conflict bait: two feature branches tune this line
+LEARNING_RATE = 3e-3          # feature/tune-lr: raised to train faster
 
 # --- Data -------------------------------------------------------------------
 TEST_SIZE = 0.2               # fraction of rows held out for evaluation
