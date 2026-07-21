@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+
+# Trained model artifacts (produced by train.py)
+models/
+
+# Coverage reports
+.coverage
+coverage.xml
+htmlcov/

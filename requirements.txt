@@ -1,0 +1,17 @@
+# Core numerics
+numpy
+pandas
+
+# ML
+torch
+scikit-learn
+joblib
+
+# API
+fastapi
+uvicorn[standard]
+
+# Testing
+pytest
+pytest-cov
+httpx

@@ -1,0 +1,17 @@
+[tool.pytest.ini_options]
+# Put the project root on sys.path so top-level modules (app, model,
+# preprocessing) are importable when tests live under tests/. Makes bare
+# `pytest` behave like `python -m pytest` (needed in Docker and CI).
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+# Measure the application modules, not the tests themselves.
+source = ["."]
+omit = [
+    "tests/*",
+    "train.py",  # CLI entrypoint; exercised via `python train.py`, not unit tests
+]
+
+[tool.coverage.report]
+show_missing = true
