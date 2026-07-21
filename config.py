@@ -7,7 +7,7 @@ for the Git & GitHub module.
 """
 
 # --- Optimisation -----------------------------------------------------------
-EPOCHS = 100
+EPOCHS = 50                    # feature/faster-epochs: shorter runs
 BATCH_SIZE = 256
 LEARNING_RATE = 5e-4          # staging: lowered for stability
 
