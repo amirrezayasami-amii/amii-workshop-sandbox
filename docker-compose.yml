@@ -1,0 +1,34 @@
+# Build/run the regression API with live code reload and GPU-ready config.
+#
+#   docker compose build
+#   docker compose run --rm api python train.py   # train once -> ./models
+#   docker compose up                             # serve API on :8000
+#
+# The bind mount below maps your project into the container, so edits to
+# app.py / model.py etc. are picked up immediately (uvicorn --reload), and
+# the trained model written to ./models on the host is visible to the API.
+services:
+  api:
+    build: .
+    image: regression-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app          # live code + models sync between host and container
+    environment:
+      - MODEL_DIR=/app/models
+    # --reload restarts uvicorn whenever mounted source files change.
+    command: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+
+    # --- GPU passthrough -------------------------------------------------
+    # Requires a Linux host with an NVIDIA GPU + nvidia-container-toolkit.
+    # (Not supported on Docker Desktop for Mac.) Uncomment to enable, and
+    # switch the Dockerfile base image to a CUDA build so torch sees the GPU.
+    #
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]

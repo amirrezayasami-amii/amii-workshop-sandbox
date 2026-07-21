@@ -1,0 +1,23 @@
+# Version control & CI
+.git/
+.github/
+
+# Python caches and virtual envs
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Docker files themselves
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Trained artifacts (produced at runtime, mounted via volume)
+models/
+
+# Editor / OS cruft
+.DS_Store
+.idea/
+.vscode/
