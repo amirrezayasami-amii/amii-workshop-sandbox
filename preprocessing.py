@@ -23,8 +23,9 @@ def drop_missing(df: pd.DataFrame, columns=None) -> pd.DataFrame:
 def normalize(df: pd.DataFrame, columns) -> pd.DataFrame:
     """Min-max normalize the given numeric columns into the [0, 1] range.
 
-    Constant columns (max == min) are mapped to all zeros to avoid division
-    by zero.
+    Each column is linearly rescaled so its minimum maps to 0 and its maximum
+    to 1. Constant columns (max == min) are mapped to all zeros to avoid
+    division by zero.
 
     Args:
         df: Input DataFrame.
