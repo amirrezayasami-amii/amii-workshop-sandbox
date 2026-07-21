@@ -14,3 +14,6 @@ models/
 .coverage
 coverage.xml
 htmlcov/
+
+# Workshop slides (kept out of version control)
+slides/
