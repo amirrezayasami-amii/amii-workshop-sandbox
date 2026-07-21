@@ -84,6 +84,17 @@ def encode_labels(series: pd.Series):
     return encoded, classes
 
 
+def clip_outliers(df: pd.DataFrame, columns, lower=0.05, upper=0.95) -> pd.DataFrame:
+    """Clip the given columns to their [lower, upper] quantile range.
+
+    NOTE (workshop exercise): this implementation is intentionally INCOMPLETE.
+    ``tests/test_clip_outliers.py`` is red until you finish it.
+    """
+    out = df.copy()
+    # TODO: clip each column to its lower/upper quantiles with Series.clip().
+    return out
+
+
 def load_dataset(path: str) -> pd.DataFrame:
     """Load a CSV dataset from disk.
 
