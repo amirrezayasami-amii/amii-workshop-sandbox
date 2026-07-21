@@ -111,12 +111,15 @@ def save_dataset(df: pd.DataFrame, path: str) -> None:
     df.to_csv(path, index=False)
 
 
-def preprocess_pipeline(path: str, normalize_columns) -> pd.DataFrame:
-    """Load a dataset, drop missing rows, and normalize the given columns.
+def preprocess_pipeline(
+    path: str, normalize_columns, standardize_columns=None
+) -> pd.DataFrame:
+    """Load a dataset, drop missing rows, and scale the given columns.
 
     Args:
         path: Path to the CSV file to load.
         normalize_columns: Columns to min-max normalize.
+        standardize_columns: Optional columns to z-score standardize.
 
     Returns:
         The fully preprocessed DataFrame.
@@ -124,6 +127,8 @@ def preprocess_pipeline(path: str, normalize_columns) -> pd.DataFrame:
     df = load_dataset(path)
     df = drop_missing(df)
     df = normalize(df, normalize_columns)
+    if standardize_columns:
+        df = standardize(df, standardize_columns)
     return df
 
 
