@@ -91,7 +91,9 @@ def clip_outliers(df: pd.DataFrame, columns, lower=0.05, upper=0.95) -> pd.DataF
     ``tests/test_clip_outliers.py`` is red until you finish it.
     """
     out = df.copy()
-    # TODO: clip each column to its lower/upper quantiles with Series.clip().
+    for col in columns:
+        lo, hi = out[col].quantile(lower), out[col].quantile(upper)
+        out[col] = out[col].clip(lower=lo, upper=hi)
     return out
 
 
